@@ -3,8 +3,8 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import tokenInterceptor from '../Services/token.interceptor';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import tokenInterceptor from '../Interceptors/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
