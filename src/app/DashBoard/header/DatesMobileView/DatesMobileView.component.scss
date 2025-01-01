@@ -1,0 +1,81 @@
+@import "../../../../media-queries";
+@import "../../../../global-constants";
+
+:host {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+
+  .dropdown-container {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+  }
+
+  .dropdown-options {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    max-height: 200px; // Limit the height if there are many options
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 0.9rem;
+    gap: 0.3rem;
+    list-style: none;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 70%;
+
+    .seperator {
+      width: 100%;
+      height: 2px;
+      background-color: $buttons-color;
+    }
+
+    /* Ensure options appear above or below the container */
+    &.above {
+      bottom: 100%; // Align options above the container
+      margin-bottom: 0.5rem;
+    }
+
+    &.below {
+      top: 100%; // Align options below the container
+      margin-top: 0.5rem;
+    }
+
+    .dropdown-option {
+      padding: 1rem;
+      border-radius: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:not(.selected) {
+        &:hover {
+          background-color: $buttons-color-opacity-3;
+        }
+      }
+
+
+      &.selected {
+        background-color: $buttons-color;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .empty-dropdown-option {
+      padding: 0.5rem;
+      color: #999;
+    }
+  }
+}

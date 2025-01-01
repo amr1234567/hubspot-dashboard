@@ -1,0 +1,41 @@
+<div class="lead-overview">
+    <p>Leads Overview</p>
+    @for (item of staticData(); track item.title) {
+    <div class="item">
+        <div class="icon" [ngClass]="item.color">
+            <ng-container [ngSwitch]="item.title">
+                <app-quailfied-fill-icon [width]="24" [height]="24" [color]="item.color"
+                    *ngSwitchCase="'Qualified'"></app-quailfied-fill-icon>
+                <app-opportunity-empty-icon [width]="24" [height]="24" [color]="item.color"
+                    *ngSwitchCase="'Opportunity'"></app-opportunity-empty-icon>
+                <app-unqualified-fill-icon [width]="24" [height]="24" [color]="item.color"
+                    *ngSwitchCase="'Unqualified'"></app-unqualified-fill-icon>
+            </ng-container>
+        </div>
+        <div class="content">
+            <span class="title">{{item.title}}</span>
+            <span class="value">{{item.value.recentlyCreatedValue| number:'1.0-0'}}</span>
+        </div>
+    </div>
+    }
+</div>
+<div class="lead-total">
+    @for(item of staticData(); track item.title){
+    <div class="item" [ngClass]="item.color">
+        <div class="icon" [ngClass]="item.color">
+            <ng-container [ngSwitch]="item.title">
+                <app-quailfied-fill-icon [width]="24" [height]="24"
+                    *ngSwitchCase="'Qualified'"></app-quailfied-fill-icon>
+                <app-opportunity-empty-icon [width]="24" [height]="24"
+                    *ngSwitchCase="'Opportunity'"></app-opportunity-empty-icon>
+                <app-unqualified-fill-icon [width]="24" [height]="24"
+                    *ngSwitchCase="'Unqualified'"></app-unqualified-fill-icon>
+            </ng-container>
+        </div>
+        <div class="content">
+            <span class="title">{{item.title}}</span>
+            <span class="value">{{item.value.globalValue| number:'1.0-0'}}</span>
+        </div>
+    </div>
+    }
+</div>

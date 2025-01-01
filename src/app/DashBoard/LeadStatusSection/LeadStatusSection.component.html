@@ -1,0 +1,26 @@
+<header>
+    <h2>Lead Status</h2>
+    <app-more-options-icon color="#888888" />
+</header>
+<main>
+    <div class="bar">
+        @for(item of staticData(); track item.title){
+        @if(item.width > 0){
+        <div class="progress" [style.width.%]="item.width" [style.backgroundColor]="item.color"></div>
+        }
+        }
+    </div>
+    <div class="main">
+        @for(item of staticData(); track item.title){
+        <div class="item" [style.borderBottom]="$last ? 'none' : '1px solid #EAEAEA'">
+            <div class="icon">
+                <app-item-circle-icon [color]="item.color" />
+            </div>
+            <div class="content">
+                <span class="title">{{item.title}}</span>
+                <span class="value">{{item.value.recentlyCreatedValue| number:'1.0-0'}}</span>
+            </div>
+        </div>
+        }
+    </div>
+</main>

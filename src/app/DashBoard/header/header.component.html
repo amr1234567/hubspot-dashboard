@@ -1,0 +1,25 @@
+<nav>
+    <div class="time">
+        <ul *mediaQuery="matchMediaQueries.fromMobile">
+            @for(buttonData of filtersButtons; track $index){
+            <li class="nav-list-item" [class.selected]="currentIndex()=== $index" (click)="selectTimeOption($index)">
+                {{buttonData.dateName}}</li>
+            }@empty {
+            <li class="empty-nav-list-item">No buttons found.</li>
+            }
+        </ul>
+        <app-dates-mobile-view *mediaQuery="matchMediaQueries.untilMobile" [currentIndex]="currentIndex()"
+            (selectOption)="selectTimeOption($event)" />
+    </div>
+    @if(showRange()){
+    <app-date-range-container *mediaQuery="matchMediaQueries.fromMobile" (confirmRange)="confirmRange($event)"
+        (resetRange)="resetRange()" [dateFrom]="date()?.dateFrom" [dateTo]="date()?.dateTo" />
+    }
+
+</nav>
+@if(showRange()){
+<app-date-range-container *mediaQuery="matchMediaQueries.untilMobile" (confirmRange)="confirmRange($event)"
+    (resetRange)="resetRange()" [dateFrom]="date()?.dateFrom" [dateTo]="date()?.dateTo" />
+}
+
+<app-owner-drop-down (selectOnwer)="selectOwner($event)" [selectedOption]="selectedOwner()" />

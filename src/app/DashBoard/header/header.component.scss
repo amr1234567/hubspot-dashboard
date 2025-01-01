@@ -1,0 +1,83 @@
+@import "../../../media-queries";
+@import "../../../global-constants";
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}
+
+:host {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include until-mobile {
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        height: fit-content;
+
+        @include until-mobile {
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .time {
+            width: 100%;
+            display: flex;
+            gap: 1rem;
+
+            ul {
+                list-style: none;
+                border: 1px solid gray;
+                display: flex;
+                gap: 0.5rem;
+                width: fit-content;
+                height: fit-content;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+
+                li {
+                    transition: 0.2s ease-in-out;
+                    cursor: pointer;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 0.5rem 1.4rem;
+                    border-radius: 0.5rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    user-select: none;
+
+                    &:not(.selected) {
+                        &:hover {
+                            background-color: $buttons-color-opacity-3;
+                        }
+                    }
+
+                    &.selected {
+                        background-color: $buttons-color;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

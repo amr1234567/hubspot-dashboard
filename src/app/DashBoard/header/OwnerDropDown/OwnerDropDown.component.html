@@ -1,0 +1,28 @@
+<div class="dropdown" (click)="onToggleDropdown()">
+    <span class="selected-option">
+        {{ selectedOption() ? getOwnerName : 'Select an owner' }}
+    </span>
+    <i class="arrow" [class.open]="dropdownOpen()"></i>
+</div>
+
+@if(dropdownOpen()){
+<ul class="dropdown-list">
+    <li class="dropdown-item" (click)="onSelectOwner('')">
+        <div class="owner-details">
+            <strong>All</strong>
+        </div>
+    </li>
+    <div class="seperator"></div>
+    @for(owner of owners(); track owner.id) {
+    <li class="dropdown-item" (click)="onSelectOwner(owner.id)">
+        <div class="owner-details">
+            <strong>{{ owner.name }}</strong>
+            <span class="owner-email">{{ owner.email }}</span>
+        </div>
+    </li>
+    @if(!$last){
+    <div class="seperator"></div>
+    }
+    }
+</ul>
+}

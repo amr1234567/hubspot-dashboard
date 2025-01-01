@@ -1,0 +1,29 @@
+<div class="login-main-page">
+    <form (ngSubmit)="onLogin()" [formGroup]="formGroup">
+        <h2>Welcome Back</h2>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" required>
+            <div *ngIf="formGroup.get('email')?.invalid && formGroup.get('email')?.touched">
+                <small *ngIf="formGroup.get('email')?.errors?.['required']">Email is required.</small>
+                <small *ngIf="formGroup.get('email')?.errors?.['email']">Enter a valid email.</small>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" required>
+            <div *ngIf="formGroup.get('password')?.invalid && formGroup.get('password')?.touched">
+                <small *ngIf="formGroup.get('password')?.errors?.['required']">Password is required.</small>
+                <small *ngIf="formGroup.get('password')?.errors?.['minlength']">
+                    Password must be at least 8 characters long.
+                </small>
+            </div>
+        </div>
+        
+        <button 
+        type="submit" 
+        [disabled]="formGroup.invalid || !formGroup.dirty">
+        Login
+        </button>
+    </form>
+</div>

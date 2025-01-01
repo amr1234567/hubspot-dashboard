@@ -1,0 +1,31 @@
+<header>
+    <app-menu-icon (click)="toggleAsideDraw()" color="white" *mediaQuery="matchMediaQueries.untilMobile" />
+    <img src="/Logo.png" alt="" class="logo">
+    <div class="buttons" *mediaQuery="matchMediaQueries.fromMobile">
+        <button class="logout" (click)="logout()" title="Logout">
+            <app-logout-icon color="#333333" />
+        </button>
+    </div>
+</header>
+<router-outlet />
+
+@if(showAsideDraw()){
+<div class="model-overlay" *mediaQuery="matchMediaQueries.untilMobile">
+    <div class="model">
+        <header>
+            <img src="/Logo.png" alt="" class="logo">
+            <button class="close-btn" (click)="toggleAsideDraw()">
+                <app-close-icon color="#333333" />
+            </button>
+        </header>
+        <ul class="items">
+            <li class="nav-item" (click)="logout()" title="Logout">
+                <div class="icon">
+                    <app-logout-icon color="#333333" />
+                </div>
+                <span class="text">Logout</span>
+            </li>
+        </ul>
+    </div>
+</div>
+}

@@ -1,0 +1,20 @@
+<div class="dropdown-container" (click)="toggleDropdown()">
+    {{ filtersButtons[currentIndex()].dateName || 'Select an option' }}
+</div>
+
+@if(dropdownOpen()){
+<ul class="dropdown-options">
+    @for(buttonData of filtersButtons; track buttonData.dateName){
+    <li class="dropdown-option" [class.selected]="currentIndex() === $index" (click)="onSelectOption($index)">
+        {{ buttonData.dateName }}
+    </li>
+    @if(!$last){
+    <div class="seperator"></div>
+    }
+    }@empty {
+    <li class="empty-dropdown-option">
+        No options found.
+    </li>
+    }
+</ul>
+}

@@ -1,0 +1,30 @@
+<app-header />
+@if(dashboardAsSignal()){
+<main>
+    <div class="part1">
+        <div class="total-contacts">
+            <div class="content">
+                <span class="title">Contacts</span>
+                <span class="value">{{ContactsNumber() | number:'1.0-0'}}</span>
+            </div>
+            <div class="icon">
+                <app-contact-icon />
+            </div>
+        </div>
+        <app-contacts-section />
+    </div>
+    <div class="part2">
+        <div class="general-info">
+            <app-customers-and-leads-section />
+        </div>
+        <app-calls-details-section />
+    </div>
+    <div class="part3">
+        <app-lead-status-section />
+    </div>
+</main>
+}@else {
+<div class="dashboard-not-found">
+    <h1>Loading....</h1>
+</div>
+}

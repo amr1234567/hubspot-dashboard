@@ -1,0 +1,18 @@
+<div (click)="toggleDialog()">
+    <span>
+        {{ dateFrom() | date: 'shortDate' }}
+    </span>
+    @if(!dateFrom()){
+    <span>From</span>
+    }
+    <app-arrow-right-left-icon color="black" className="icon" [width]="15" [height]="15" />
+    <span>{{ dateTo()| date: 'shortDate'}}</span>
+    @if(!dateTo()){
+    <span>To</span>
+    }
+    <app-arrow-bottom-icon color="black" className="icon" [width]="15" [height]="15" />
+</div>
+@if (showDateDialog()){
+<app-date-range-model (confirm)="onConfirmRange($event)" (reset)="onResetRange()" [dateFrom]="dateFrom()"
+    [dateTo]="dateTo()" />
+}

@@ -1,0 +1,35 @@
+@for(item of staticData(); track item.title){
+<div class="item">
+    <header>
+        <div class="title">
+            <div class="icon">
+                @switch (item.title) {
+                @case ('Calls') {
+                <app-call-icon [color]="'#333333'" />
+                }
+                @case ('Whatsapp') {
+                <app-whatsapp-icon [color]="'#333333'" />
+                }
+                }
+            </div>
+            <p>{{item.title}}</p>
+        </div>
+        <div class="actions">
+            <app-more-options-icon [color]="'#888888'" />
+        </div>
+    </header>
+    <div class="bar">
+        <div class="progrees" [ngClass]="item.color" [style]="{width: item.widthPrecentage+ '%'}"></div>
+    </div>
+    <div class="details">
+        <div class="answered">
+            <span class="title">Answered</span>
+            <span class="value">{{item.value.answered.recentlyCreatedValue | number : '1.0-0'}}</span>
+        </div>
+        <div class="not-answered">
+            <span class="title">Not answered</span>
+            <span class="value">{{item.value.notAnswered.recentlyCreatedValue | number : '1.0-0'}}</span>
+        </div>
+    </div>
+</div>
+}

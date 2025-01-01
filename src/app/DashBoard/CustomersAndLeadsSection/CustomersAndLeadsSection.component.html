@@ -1,0 +1,17 @@
+@for(item of staticData(); track item.title){
+<div class="item">
+    <div class="icon">
+        @switch (item.title) {
+        @case ('Leads') {
+        <app-lead-icon [width]="48" [height]="48" [color]="'#FDC007'"></app-lead-icon>
+        }@case ('Customers') {
+        <app-customer-icon [width]="48" [height]="48" [color]="'#FDC007'"></app-customer-icon>
+        }
+        }
+    </div>
+    <div class="content">
+        <span class="title">{{item.title}}</span>
+        <span class="value">{{item.value.recentlyCreatedValue | number : '1.0-0'}}</span>
+    </div>
+</div>
+}

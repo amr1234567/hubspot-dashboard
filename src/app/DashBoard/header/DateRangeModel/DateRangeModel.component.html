@@ -1,0 +1,19 @@
+<div class="modal-content">
+    <h2>Select Date Range</h2>
+    <form>
+        <div class="inputs-group">
+            <div class="form-group">
+                <label for="dateFrom">Date From:</label>
+                <input type="date" id="dateFrom" [(ngModel)]="dateFrom" name="dateFrom" [attr.max]="maxDateForDateTo" />
+            </div>
+            <div class="form-group">
+                <label for="dateTo">Date To:</label>
+                <input type="date" id="dateTo" [(ngModel)]="dateTo" name="dateTo" />
+            </div>
+        </div>
+        <div class="actions">
+            <button type="button" class="confirm" (click)="onConfirm()">Confirm</button>
+            <button type="button" class="reset" (click)="onReset()">Reset</button>
+        </div>
+    </form>
+</div>
